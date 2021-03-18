@@ -1,4 +1,4 @@
-//37d0b771a00505f0c256d41794d1092d
+//4c1859eb5eaf44d5337039c7e072e585
 //console.log('Hello');
 
 $(document).ready(function() {
@@ -6,9 +6,11 @@ $(document).ready(function() {
     //THEN I am presented with current and future conditions for that city and that city is added to the search history
     var searchHistoryContainer = $('#past-searches');
     var searchForm = $('#search-form');
-    var currentWeatherContainer = $('current-weather');
-    var apiKey = '37d0b771a00505f0c256d41794d1092d'; //dont' submit to github with apikey. user must submit their own
+    var currentWeatherContainer = $('#current-weather');
+    var FiveDayForecastContainer = $('#five-day-forecast');
+    var apiKey = '4c1859eb5eaf44d5337039c7e072e585'; //dont' submit to github with apikey. user must submit their own
     var baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
+    var baseUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?';
     //WHEN I search for a city
     searchForm.submit(function( event ) {
         //alert( "Handler for .submit() called." );
@@ -23,10 +25,10 @@ $(document).ready(function() {
         searchHistoryContainer.append(searchTermDiv);
         console.log(formValues, city);
         //REAL VALUE GOTTEN FROM FORM
-        searchForCityWeather(city);
+        searchForCurrentCityWeather(city);
 
         });
-        function searchForCityWeather(city) {
+        function searchForCurrentCityWeather(city) {
             //&appid={API key}
             var fullUrl = baseUrl + "q=" + city + "&appid=" +apiKey;
             console.log(fullUrl);
@@ -60,7 +62,8 @@ $(document).ready(function() {
             });
         }
         function searchForFiveDayForecastWeather (city) {
-            
+            //WHEN I view future weather conditions for that city
+            //THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity  
         }
 });
 
