@@ -8,6 +8,7 @@ $(document).ready(function() {
     var searchForm = $('#search-form');
     var currentWeatherContainer = $('#current-weather');
     var FiveDayForecastContainer = $('#five-day-forecast');
+    var searchValueInput = $('#search-value');
     var apiKey = '4c1859eb5eaf44d5337039c7e072e585'; //dont' submit to github with apikey. user must submit their own
     var baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
     var baseUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?';
@@ -23,7 +24,14 @@ $(document).ready(function() {
         var formValues = $(this).serializeArray();
         var city = formValues[0].value;
         //HOW TO CREATE ELELMENT WITH JQUREY SELECTOR
-        var searchTermDiv = $('<div class="past-search-term">');
+        var searchTermDiv = $('<button type="button" class="btn past-search-term">');
+        searchTermDiv.click(function(event){
+            event.preventDefault();
+            var value = $(this).text();
+            searchForCurrentCityWeather(val);
+            searchForFiveDayForecastWeather(val);
+            //console.log(value);
+        });
         searchHistory.push(city);
         localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
         searchTermDiv.text(city);
@@ -32,9 +40,11 @@ $(document).ready(function() {
         //REAL VALUE GOTTEN FROM FORM
         searchForCurrentCityWeather(city);
         searchForFiveDayForecastWeather(city);
+        searchValueInput.val('');
         });
         function searchForCurrentCityWeather(city) {
             //&appid={API key}
+            currentWeatherContainer.html('');
             var fullUrl = baseUrl + "q=" + city + "&appid=" +apiKey;
             console.log(fullUrl);
             //WHEN I view current weather conditions for that city
@@ -69,6 +79,7 @@ $(document).ready(function() {
             });
         }
         function searchForFiveDayForecastWeather (city) {
+            FiveDayForecastContainer.html('');
             var forecastUrl = baseUrl2 + "q=" + city + "&appid=" +apiKey;
             fetch(forecastUrl).then(function(responseFromOpenWeatherMapUnProcessed){
                 return responseFromOpenWeatherMapUnProcessed.json()
@@ -105,6 +116,7 @@ $(document).ready(function() {
                         rowDiv.append(tempDiv);
                         rowDiv.append(humidityDiv);
                         rowDiv.append(windDiv);
+                        FiveDayForecastContainer.append(divRow);
                     }
                 }
             });
@@ -115,12 +127,20 @@ $(document).ready(function() {
             if (localStorage.getItem('searchHistory'))
             searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
             for (var i =0; i <searchHistory.length; i++) {
-                var searchTermDiv = $('<div class="past-search-term">');
+                var searchTermDiv = $('<button type="button" class="btn past-search-term">');
+                searchTermDiv.click(function(event){
+                    event.preventDefault();
+                    console.log(event);
+                    var value = $(this).text();
+                    console.log(value);
+                });
                 searchTermDiv.text(searchHistory[i]);
                 searchHistoryContainer.append(searchTermDiv);
-                
             }
         }
+
+
+
         retrieveSearchHistory();
 
 });
