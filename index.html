@@ -2,43 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  />
-   <link
-      rel="stylesheet"
-      href="./develop/style.css"
-    />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+   <link rel="stylesheet" href="./develop/style.css"/>
+    <title>Weather Dashboard</title>
 </head>
 <body>
+    <h1>Weather Dashboard</h1>
+
     <div class="container">
         <div class="dashboard row">
-            <div class="form-for-search col-6">
+            <div class="form-for-search col-4">
                 <form id="search-form">
                     <input type="text" name="city" placeholder="Search!"  id="search-value" />
-                    <button type="submit" class="btn"> Search </button>
+                    <button type="submit" class="btn my-1"> Search </button>
                 </form>
                 <div class="search-history">
                     <h3>SEARCH HISTORY</h3>
                     <div id="past-searches">
-    
+                        
                     </div>
                 </div>
             </div>
-            <div class="weather-data col-6">
+            <div class="weather-data col-8">
                 <h3>Current Weather</h3>
                 <div class="current-weather" id="current-weather">
                 </div>
-                <h3>Five Day Forecase Weather</h3>
+                <h3>Five Day Forecast Weather</h3>
                 <div class="five-day-forecast row" id="five-day-forecast">
                 </div>
             </div>
         </div>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>

@@ -116,7 +116,7 @@ $(document).ready(function() {
                         rowDiv.append(tempDiv);
                         rowDiv.append(humidityDiv);
                         rowDiv.append(windDiv);
-                        FiveDayForecastContainer.append(divRow);
+                        FiveDayForecastContainer.append(rowDiv);
                     }
                 }
             });
