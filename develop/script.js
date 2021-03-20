@@ -14,6 +14,7 @@ $(document).ready(function() {
     var baseUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?';
     var iconBaseUrl = 'http://openweathermap.org/img/w/';
     var searchHistory = [];
+    var clearButton = $("#clear-history");
 
     //WHEN I search for a city
     searchForm.submit(function( event ) {
@@ -145,3 +146,13 @@ $(document).ready(function() {
 
 });
 
+//Clear the search history from the page
+function clearHistory(event){
+    event.preventDefault();
+    sCity=[];
+    localStorage.removeItem('searchHistory');
+    document.location.reload();
+
+}
+
+$("#clear-history").on("click",clearHistory);
